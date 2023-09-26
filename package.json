@@ -6,7 +6,15 @@
     "doc": "docs"
   },
   "scripts": {
-    "start": "npx rimraf docs && c4builder && npx serve docs -p 80"
+    "copy": "shx mkdir -p docs && shx cp \"assets/**/*.*\" docs",
+    "build": "shx rm -rf docs && c4builder && npm run copy",
+    "serve": "npm run build && serve docs -p 80",
+    "deploy": "shx chmod +x ./build/vercel.sh && ./build/vercel.sh && npm run build"
+  },
+  "devDependencies": {
+    "c4builder": "^0.2.16",
+    "serve": "^14.2.0",
+    "shx": "^0.3.4"
   },
   "repository": {
     "type": "git",
