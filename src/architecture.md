@@ -1,6 +1,6 @@
 ### • Como a arquitetura está sendo exibida?
 
-A arquitetura está sendo expressa por meio deste documento através da abordagem de diagramação de arquitetura de software C4 Model. A documentação deste projeto está sendo dividida em 4 tópicos, sendo o quarto tópico contendo 4 níveis conforme a estrutura hierárquica a seguir:
+A arquitetura está sendo expressa por meio deste documento através da abordagem de diagramação de arquitetura de software C4 Model. A documentação deste projeto está sendo dividida em 2 tópicos conforme a estrutura hierárquica a seguir:
 
 ```
 \ Arquitetura de Software (Esta página)
