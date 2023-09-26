@@ -1,0 +1,26 @@
+{
+  "name": "oc-patient-docs",
+  "version": "0.0.1",
+  "description": "Documentação do projeto, oc-frontend-patient e oc-api-patient",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "start": "npx rimraf docs && c4builder && npx serve docs -p 80"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "keywords": [
+    "nestjs",
+    "c4-model",
+    "architecture"
+  ],
+  "author": "Luiz Gustavo",
+  "license": "MIT",
+  "bugs": {
+    "url": ""
+  },
+  "homepage": ""
+}
