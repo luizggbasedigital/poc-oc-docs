@@ -9,7 +9,7 @@
 	"generateCompletePDF": true,
 	"generateWEB": true,
 	"webTheme": "https://cdn.jsdelivr.net/npm/docsify-darklight-theme@latest/dist/style.min.css",
-	"repoUrl": "https://github.com/MurylloEx/Seja-UPE-Docs.git",
+	"repoUrl": "https://github.com/luizggbasedigital/poc-oc-patient-docs",
 	"docsifyTemplate": "template/theme.template.js",
 	"webPort": "3000",
 	"pdfCss": "https://cdn.jsdelivr.net/npm/c4builder@0.2.16/pdf.css",

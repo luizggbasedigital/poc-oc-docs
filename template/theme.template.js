@@ -1,4 +1,5 @@
 const settings = {
+  coverpage: true,
   "flexible-alerts": {
     note: {
       label: "Nota",
@@ -23,13 +24,20 @@ module.exports = (options) => {
       <meta charset="UTF-8">
       <title>${options.name}</title>
       <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-      <meta name="description" content="">
+      <meta name="description" content="Repositório para a documentação do projeto oc-paciente.">
       <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
       <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/sidebar.min.css">
       <link rel="stylesheet" href="${options.stylesheet}">
+      <link rel="icon" href="favicon.ico">
       <style>
         p:not([align]), td, th {
           text-align: justify!important;
+        }
+        .cover p:not([align]), td, th {
+          text-align: center!important;
+        }
+        .cover .cover-main {
+          z-index: 0!important;
         }
         table {
           width: 100%!important;
