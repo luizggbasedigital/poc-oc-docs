@@ -1,6 +1,6 @@
 {
-	"projectName": "OC-Patient",
-	"homepageName": "Arquitetura de Software",
+	"projectName": "OC-Docs",
+	"homepageName": "Página Inicial",
 	"rootFolder": "src",
 	"distFolder": "docs",
 	"generateMD": false,
@@ -9,7 +9,7 @@
 	"generateCompletePDF": true,
 	"generateWEB": true,
 	"webTheme": "https://cdn.jsdelivr.net/npm/docsify-darklight-theme@latest/dist/style.min.css",
-	"repoUrl": "https://github.com/luizggbasedigital/poc-oc-patient-docs",
+	"repoUrl": "https://github.com/luizggbasedigital/poc-oc-docs",
 	"docsifyTemplate": "template/theme.template.js",
 	"webPort": "3000",
 	"pdfCss": "https://cdn.jsdelivr.net/npm/c4builder@0.2.16/pdf.css",

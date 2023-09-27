@@ -6,5 +6,5 @@
 
 - Documentação do oc-paciente
 
-<a href="/OC-Patient.pdf">Versão em PDF</a>
+<a href="/OC-Docs.pdf">Versão em PDF</a>
 <a href="/#/HOME">Documentação</a>
