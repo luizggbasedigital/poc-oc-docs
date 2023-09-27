@@ -8,27 +8,32 @@ LAYOUT_WITH_LEGEND()
 
 skinparam backgroundcolor transparent
 
-Person(ActorUser, "Usuário", "É o ator responsável por realizar a interação com o sistema e obter as informações referentes à universidade. Este ator requer autenticação utilizando uma conta Google para acessar as funcionalidades do aplicativo.")
+/'Actors'/
+Person(ActorPatient, "Paciente", "É o ator responsável por realizar a interação com o sistema")
 
-Container_Boundary(SystemSejaUPE, "Sistema Seja UPE") {
-  Container(ContainerMobileApp, "Aplicativo Móvel", "Container: React Native", "Provê aos usuários acesso as funcionalidades a partir do cliente.")
-  Container(ContainerServerApi, "API REST", "Container: NestJS/Node", "Provê as funcionalidades do Seja UPE via API JSON/HTTPS.")
-  Container(ContainerDatabase, "Banco de Dados", "Container: RDBMS/SQLite", "Armazena dados dos campi da UPE (Universidade de Pernambuco).")
-  
-  Rel(ContainerServerApi, ContainerDatabase, "Realiza leitura e armazena dados", "TypeORM")
-  Rel(ContainerMobileApp, ContainerServerApi, "Faz uma chamada para API", "JSON/HTTPS")
+/'Internal Systems'/
+Container_Boundary(SystemOCPatient, "Sistema OC-Paciente") {
+  Container(ContainerWebApp, "Aplicação Web", "Container: NextJS/React", "Provê aos usuários acesso as funcionalidades a partir do cliente.")
+  Container(ContainerServerApi, "API REST", "Container: NestJS/Node", "Provê as funcionalidades do OC-Paciente via API JSON/HTTPS.")
+  Container(ContainerDatabaseRedis, "Banco de Dados NoSQL", "Container: Redis", "Armazena dados temporários.")
+
+  Rel(ActorPatient, ContainerWebApp, "Acessa paciente.grupooncoclinicas.com", "HTTPS")
+  Rel(ContainerServerApi, ContainerDatabaseRedis, "Realiza leitura e armazena dados", "TCP")
+  Rel(ContainerWebApp, ContainerServerApi, "Faz uma chamada para API", "JSON/HTTPS")
 }
 
-System(SystemWebsocket, "WebSocket", "É responsável por manter o envio e recebimento de mensagens dentro do chat.")
-System_Ext(SystemSmtp, "Sistema de E-mail", "É responsável por enviar os e-mails de boas-vindas ao usuário através do SMTP2GO.")
-System_Ext(SystemNotification, "Sistema de Notificações", "É responsável por emitir as notificações no smartphone através do Expo Notifications para lembrar o usuário de interação com o aplicativo.")
-System_Ext(SystemOAuth2, "Sistema de SSO", "É responsável por possibilitar ao usuário realizar login utilizando sua conta Google.")
+/'External Systems'/
+System_Ext(SystemMyPhysicianApi, "API Meu Médico", "Responsável por fornecer conexão direta com o sistema Meu Médico.")
+System_Ext(SystemCMSApi, "API Core", "Responsável por fornecer conexão direta com os dados do CMS da api-core.")
+System_Ext(SystemTasyApi, "API Tasy", "Responsável por fornecer conexão direta com o sistema Tasy.")
+System_Ext(SystemAWSCognito, "AWS Cognito", "Responsável por gerenciar todo a autenticação do usuário (Cadastro, Login, MFA, Recuperação de conta).")
+System_Ext(SystemGoogleRecaptcha, "Google Recaptcha", "Responsável por validar token recaptcha.")
 
-Rel(ActorUser, ContainerMobileApp, "Visualiza e interage com as funcionalidades do sistema")
-Rel(ContainerMobileApp, SystemNotification, "Aplicativo agenda as notificações para aproximadamente 3 horas depois", "Expo Notification")
-Rel(ContainerMobileApp, SystemWebsocket, "Envia e recebe mensagens", "React Native useWebSocket")
-Rel(ContainerServerApi, SystemWebsocket, "Difunde as mensagens em modo Broadcast", "NestJS Websocket Gateway")
-Rel(ContainerServerApi, SystemOAuth2, "Autentica o usuário", "OAuth2")
-Rel(ContainerServerApi, SystemSmtp, "Envia e-mail utilizando", "SMTP2GO")
+/'Relations'/
+Rel(SystemOCPatient, SystemGoogleRecaptcha, "Valida token recaptcha", "@google-cloud/recaptcha-enterprise")
+Rel(SystemOCPatient, SystemAWSCognito, "Autentica o paciente", "@aws-sdk/client-cognito-identity-provider")
+Rel(SystemOCPatient, SystemMyPhysicianApi, "Obtém agendamentos do paciente", "JSON/HTTPS")
+Rel(SystemOCPatient, SystemTasyApi, "Obtém dados do Tasy", "JSON/HTTPS")
+Rel(SystemOCPatient, SystemCMSApi, "Gestão de acesso ao prontuário", "JSON/HTTPS")
 
 @enduml
