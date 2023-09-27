@@ -48,3 +48,6 @@ No nível C1 você verá o sistema, do ponto de vista de contexto do sistema e d
 
 7. [REST API](https://standards.rest/)<br>
    API REST, também chamada de API RESTful, é uma interface de programação de aplicações (API ou API web) que está em conformidade com as restrições do estilo de arquitetura REST, permitindo a interação com serviços web RESTful. REST é a sigla em inglês para "Representational State Transfer", que em português significa tansferência de estado representacional. Essa arquitetura foi criada pelo cientista da computação Roy Fielding.
+
+8. [AWS - Cognito](https://aws.amazon.com/pt/cognito/)<br>
+   O Amazon Cognito é uma plataforma de identidade para aplicações web e aplicativos móveis. É um diretório de usuários, um servidor de autenticação e um serviço de autorização para credenciais da AWS e tokens de acesso do OAuth 2.0. Com o Amazon Cognito, você pode autenticar e autorizar usuários do diretório de usuários integrado, de seu diretório corporativo e de provedores de identidades de consumidores, como Google e Facebook.
