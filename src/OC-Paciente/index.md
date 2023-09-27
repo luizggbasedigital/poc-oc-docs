@@ -1,3 +1,6 @@
+- [C1. Visão Geral](/OC-Paciente/C1.%20Visão%20Geral/HOME)
+- [C2. Sistema](/OC-Paciente/C1.%20Visão%20Geral/C2.%20Sistema/HOME)
+
 ### • Principais tecnologias envolvidas
 
 1. [JavaScript](https://www.javascript.com/)<br>
