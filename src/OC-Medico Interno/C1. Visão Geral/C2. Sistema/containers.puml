@@ -9,31 +9,50 @@ LAYOUT_WITH_LEGEND()
 skinparam backgroundcolor transparent
 
 /'Actors'/
-Person(ActorPatient, "Paciente", "É o ator responsável por realizar a interação com o sistema")
+Person(ActorInternalPhysician, "Médico Interno", "É o ator responsável por realizar a interação com o sistema")
 
 /'Internal Systems'/
-Container_Boundary(SystemOCPatient, "Sistema OC-Paciente") {
+Container_Boundary(SystemOCInternalPhysician, "Sistema OC-Médico Interno") {
   Container(ContainerWebApp, "Aplicação Web", "Container: NextJS/React", "Provê aos usuários acesso as funcionalidades a partir do cliente.")
-  Container(ContainerServerApi, "API REST", "Container: NestJS/Node", "Provê as funcionalidades do OC-Paciente via API JSON/HTTPS.")
+  Container(ContainerServerApi, "API REST", "Container: NestJS/Node", "Provê as funcionalidades do OC-Médico Interno via API JSON/HTTPS.")
   Container(ContainerDatabaseRedis, "Banco de Dados NoSQL", "Container: Redis", "Armazena dados temporários.")
+  Container(ContainerDatabaseSQL, "Banco de Dados SQL", "Container: MySQL", "Armazena dados que irão persistir (mesmo banco de dados utilizado na Api Core).")
 
-  Rel(ActorPatient, ContainerWebApp, "Acessa paciente.grupooncoclinicas.com", "HTTPS")
+  Rel(ActorInternalPhysician, ContainerWebApp, "Acessa medico.grupooncoclinicas.com", "HTTPS")
   Rel(ContainerServerApi, ContainerDatabaseRedis, "Realiza leitura e armazena dados", "TCP")
-  Rel(ContainerWebApp, ContainerServerApi, "Faz uma chamada para API", "JSON/HTTPS")
+  Rel(ContainerServerApi, ContainerDatabaseSQL, "Realiza leitura e armazena dados", "TCP")
+
+  Rel(ContainerWebApp, ContainerServerApi, "Faz chamada à API REST", "JSON/HTTPS")
+
 }
 
 /'External Systems'/
 System_Ext(SystemMyPhysicianApi, "API Meu Médico", "Responsável por fornecer conexão direta com o sistema Meu Médico.")
-System_Ext(SystemCMSApi, "API Core", "Responsável por fornecer conexão direta com os dados do CMS da api-core.")
 System_Ext(SystemTasyApi, "API Tasy", "Responsável por fornecer conexão direta com o sistema Tasy.")
+
+/'API-Core Systems'/
+System_Ext(SystemApiCore, "API Core", "Responsável por fornecer conexão direta com a api-core.")
+System_Ext(SystemMevo, "Mevo", "Responsável por fornecer conexão direta com a Mevo.")
+System_Ext(SystemSalesForce, "SalesForce", "Responsável por fornecer conexão direta a SalesForce.")
+System_Ext(SystemGrano, "Grano", "Responsável por fornecer conexão direta a Grano.")
+System_Ext(SystemNetshow, "Netshow", "Responsável por fornecer conexão direta a Netshow.")
+
+/'AWS Systems'/
 System_Ext(SystemAWSCognito, "AWS Cognito", "Responsável por gerenciar todo a autenticação do usuário (Cadastro, Login, MFA, Recuperação de conta).")
-System_Ext(SystemGoogleRecaptcha, "Google Recaptcha", "Responsável por validar token recaptcha.")
+System_Ext(SystemAWSSecretManager, "AWS SecretManager", "Responsável por gerenciar variáveis de ambiente.")
 
 /'Relations'/
-Rel(SystemOCPatient, SystemGoogleRecaptcha, "Valida token recaptcha", "@google-cloud/recaptcha-enterprise")
-Rel(SystemOCPatient, SystemAWSCognito, "Autentica o paciente", "@aws-sdk/client-cognito-identity-provider")
-Rel(SystemOCPatient, SystemMyPhysicianApi, "Obtém agendamentos do paciente", "JSON/HTTPS")
-Rel(SystemOCPatient, SystemTasyApi, "Obtém dados do Tasy", "JSON/HTTPS")
-Rel(SystemOCPatient, SystemCMSApi, "Gestão de acesso ao prontuário", "JSON/HTTPS")
+Rel(SystemOCInternalPhysician, SystemAWSCognito, "Autentica o médico", "@aws-sdk/client-cognito-identity-provider")
+Rel(SystemOCInternalPhysician, SystemAWSSecretManager, "Obtém variáveis de ambiente", "@aws-sdk/client-secrets-manager")
+Rel(SystemOCInternalPhysician, SystemMyPhysicianApi, "Realiza SSO", "JSON/HTTPS")
+Rel(SystemOCInternalPhysician, SystemTasyApi, "Obtém dados do Tasy", "JSON/HTTPS")
+
+/'API-Core Integrations'/
+Rel(ContainerWebApp, SystemApiCore, "Faz chamada à API Core", "JSON/HTTPS")
+Rel(SystemApiCore, SystemMevo, "Emite receita médica digital", "JSON/HTTPS")
+Rel(SystemApiCore, SystemSalesForce, "Criação de caso e usuário no SalesForce", "JSON/HTTPS")
+Rel(SystemApiCore, SystemGrano, "Gera URL de acesso Grano", "JSON/HTTPS")
+Rel(SystemApiCore, SystemNetshow, "Gera URL de acesso oc-academia", "JSON/HTTPS")
+
 
 @enduml

@@ -10,7 +10,7 @@ LAYOUT_LEFT_RIGHT()
 skinparam backgroundcolor transparent
 
 /'Actors'/
-Person(ActorPhysician, "Médico", "É o ator responsável por realizar a interação com o sistema")
+Person(ActorInternalPhysician, "Médico Interno", "É o ator responsável por realizar a interação com o sistema")
 
 /'Internal Systems'/
 System(SystemOCInternalPhysician, "Sistema OC-Médico Interno", "Responsável pelas funcionalidades: listagem de consultas, visualização de laudos, visualização de protocolos preferenciais.")
@@ -18,14 +18,30 @@ System(SystemOCInternalPhysician, "Sistema OC-Médico Interno", "Responsável pe
 /'External Systems'/
 System_Ext(SystemMyPhysicianApi, "API Meu Médico", "Responsável por fornecer conexão direta com o sistema Meu Médico.")
 System_Ext(SystemTasyApi, "API Tasy", "Responsável por fornecer conexão direta com o sistema Tasy.")
+
+/'API-Core Systems'/
+System_Ext(SystemApiCore, "API Core", "Responsável por fornecer conexão direta com a api-core.")
+System_Ext(SystemMevo, "Mevo", "Responsável por fornecer conexão direta com a Mevo.")
+System_Ext(SystemSalesForce, "SalesForce", "Responsável por fornecer conexão direta a SalesForce.")
+System_Ext(SystemGrano, "Grano", "Responsável por fornecer conexão direta a Grano.")
+System_Ext(SystemNetshow, "Netshow", "Responsável por fornecer conexão direta a Netshow.")
+
+/'AWS Systems'/
 System_Ext(SystemAWSCognito, "AWS Cognito", "Responsável por gerenciar todo a autenticação do usuário (Cadastro, Login, MFA, Recuperação de conta).")
 System_Ext(SystemAWSSecretManager, "AWS SecretManager", "Responsável por gerenciar variáveis de ambiente.")
 
 /'Relations'/
-Rel(ActorPhysician, SystemOCInternalPhysician, "Visualiza e interage com as funcionalidades do sistema")
+Rel(ActorInternalPhysician, SystemOCInternalPhysician, "Visualiza e interage com as funcionalidades do sistema")
 Rel(SystemOCInternalPhysician, SystemAWSCognito, "Autentica o médico", "@aws-sdk/client-cognito-identity-provider")
 Rel(SystemOCInternalPhysician, SystemAWSSecretManager, "Obtém variáveis de ambiente", "@aws-sdk/client-secrets-manager")
 Rel(SystemOCInternalPhysician, SystemMyPhysicianApi, "Realiza SSO", "JSON/HTTPS")
 Rel(SystemOCInternalPhysician, SystemTasyApi, "Obtém dados do Tasy", "JSON/HTTPS")
+
+/'API-Core Integrations'/
+Rel(SystemOCInternalPhysician, SystemApiCore, "Gestão de dados do CMS e integrações", "JSON/HTTPS")
+Rel(SystemApiCore, SystemMevo, "Emite receita médica digital", "JSON/HTTPS")
+Rel(SystemApiCore, SystemSalesForce, "Criação de caso e usuário no SalesForce", "JSON/HTTPS")
+Rel(SystemApiCore, SystemGrano, "Gera URL de acesso Grano", "JSON/HTTPS")
+Rel(SystemApiCore, SystemNetshow, "Gera URL de acesso oc-academia", "JSON/HTTPS")
 
 @enduml

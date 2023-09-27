@@ -17,7 +17,7 @@ System(SystemOCPatient, "Sistema OC-Paciente", "Responsável pelas funcionalidad
 
 /'External Systems'/
 System_Ext(SystemMyPhysicianApi, "API Meu Médico", "Responsável por fornecer conexão direta com o sistema Meu Médico.")
-System_Ext(SystemCMSApi, "API Core", "Responsável por fornecer conexão direta com os dados do CMS da api-core.")
+System_Ext(SystemApiCore, "API Core", "Responsável por fornecer conexão direta com os dados do CMS da api-core.")
 System_Ext(SystemTasyApi, "API Tasy", "Responsável por fornecer conexão direta com o sistema Tasy.")
 System_Ext(SystemAWSCognito, "AWS Cognito", "Responsável por gerenciar todo a autenticação do usuário (Cadastro, Login, MFA, Recuperação de conta).")
 System_Ext(SystemAWSSecretManager, "AWS SecretManager", "Responsável por gerenciar variáveis de ambiente.")
@@ -30,6 +30,6 @@ Rel(SystemOCPatient, SystemAWSCognito, "Autentica o paciente", "@aws-sdk/client-
 Rel(SystemOCPatient, SystemAWSSecretManager, "Obtém variáveis de ambiente", "@aws-sdk/client-secrets-manager")
 Rel(SystemOCPatient, SystemMyPhysicianApi, "Obtém agendamentos do paciente", "JSON/HTTPS")
 Rel(SystemOCPatient, SystemTasyApi, "Obtém dados do Tasy", "JSON/HTTPS")
-Rel(SystemOCPatient, SystemCMSApi, "Gestão de acesso ao prontuário", "JSON/HTTPS")
+Rel(SystemOCPatient, SystemApiCore, "Gestão de acesso ao prontuário", "JSON/HTTPS")
 
 @enduml

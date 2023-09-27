@@ -19,12 +19,12 @@ Container_Boundary(SystemOCPatient, "Sistema OC-Paciente") {
 
   Rel(ActorPatient, ContainerWebApp, "Acessa paciente.grupooncoclinicas.com", "HTTPS")
   Rel(ContainerServerApi, ContainerDatabaseRedis, "Realiza leitura e armazena dados", "TCP")
-  Rel(ContainerWebApp, ContainerServerApi, "Faz uma chamada para API", "JSON/HTTPS")
+  Rel(ContainerWebApp, ContainerServerApi, "Faz chamada API", "JSON/HTTPS")
 }
 
 /'External Systems'/
 System_Ext(SystemMyPhysicianApi, "API Meu Médico", "Responsável por fornecer conexão direta com o sistema Meu Médico.")
-System_Ext(SystemCMSApi, "API Core", "Responsável por fornecer conexão direta com os dados do CMS da api-core.")
+System_Ext(SystemApiCore, "API Core", "Responsável por fornecer conexão direta com os dados do CMS da api-core.")
 System_Ext(SystemTasyApi, "API Tasy", "Responsável por fornecer conexão direta com o sistema Tasy.")
 System_Ext(SystemAWSCognito, "AWS Cognito", "Responsável por gerenciar todo a autenticação do usuário (Cadastro, Login, MFA, Recuperação de conta).")
 System_Ext(SystemGoogleRecaptcha, "Google Recaptcha", "Responsável por validar token recaptcha.")
@@ -34,6 +34,6 @@ Rel(SystemOCPatient, SystemGoogleRecaptcha, "Valida token recaptcha", "@google-c
 Rel(SystemOCPatient, SystemAWSCognito, "Autentica o paciente", "@aws-sdk/client-cognito-identity-provider")
 Rel(SystemOCPatient, SystemMyPhysicianApi, "Obtém agendamentos do paciente", "JSON/HTTPS")
 Rel(SystemOCPatient, SystemTasyApi, "Obtém dados do Tasy", "JSON/HTTPS")
-Rel(SystemOCPatient, SystemCMSApi, "Gestão de acesso ao prontuário", "JSON/HTTPS")
+Rel(SystemOCPatient, SystemApiCore, "Gestão de acesso ao prontuário", "JSON/HTTPS")
 
 @enduml
