@@ -9,19 +9,29 @@ LAYOUT_LEFT_RIGHT()
 
 skinparam backgroundcolor transparent
 
-Person(ActorUser, "Usuário", "É o ator responsável por realizar a interação com o sistema e obter as informações referentes à universidade. Este ator requer autenticação utilizando uma conta Google para acessar as funcionalidades do aplicativo.")
+Person(ActorPatient, "Paciente", "É o ator responsável por realizar a interação com o sistema ")
 
-System(SystemSejaUPE, "Sistema Seja UPE", "O aplicativo Seja UPE, de propósito educativo, informativo e descritivo com forte foco em tornar a Universidade de Pernambuco mais próxima da sociedade, mostrar seus cursos e seu corpo docente de forma mais efetiva para aqueles vestibulandos que necessitem conhecer melhor a universidade.")
-System(SystemWebsocket, "WebSocket", "É responsável por manter a o envio e recebimento de mensagens dentro do chat.")
-System_Ext(SystemSmtp, "Sistema de E-mail", "É responsável por enviar os e-mails de boas-vindas ao usuário através do SMTP2GO.")
-System_Ext(SystemNotification, "Sistema de Notificações", "É responsável por emitir as notificações no smartphone através do Expo Notifications para lembrete de interação com o aplicativo.")
-System_Ext(SystemOAuth2, "Sistema de SSO", "É responsável por possibilitar o usuário realizar login utilizando sua conta Google.")
+System(SystemOCPatient, "Sistema OC-Paciente", "Responsável por fornecer os seguintes principais serviços: agendamento de consultas, cadastrar uma acompanhante, autorizar acesso a prontuário e visualização dos resultados de exames.")
 
-Rel(ActorUser, SystemSejaUPE, "Visualiza e interage com as funcionalidades do sistema")
-Rel(SystemSmtp, ActorUser, "Manda e-mail para", "SMTP2GO")
-Rel(SystemSejaUPE, SystemSmtp, "Manda e-mail utilizando", "SMTP2GO")
-Rel(SystemSejaUPE, SystemNotification, "Aplicativo agenda as notificações para aproximadamente 3 horas depois", "Expo Notification")
-Rel(SystemSejaUPE, SystemWebsocket, "Envie e recebe mensagens", "React Native useWebSocket")
-Rel(SystemSejaUPE, SystemOAuth2, "Autentica o usuário", "OAuth2")
+System(SystemRedis, "Redis", "Sistema de cacheamento Redis. Responsável por realizar o cacheamento de dados.")
+
+System_Ext(SystemMyPhysicianApi, "API Meu Médico", "Responsável por fornecer conexão direta com o sistema Meu Médico.")
+
+System_Ext(SystemCMSApi, "API Core", "Responsável por fornecer conexão direta com os dados do CMS da api-core.")
+
+System_Ext(SystemTasyApi, "API Tasy", "Responsável por fornecer conexão direta com o sistema Tasy.")
+
+System_Ext(SystemAWSCognito, "AWS Cognito", "Responsável por gerenciar todo a autenticação do usuário (Cadastro, Login, MFA, Recuperação de conta).")
+
+System_Ext(SystemGoogleRecaptcha, "Google Recaptcha", "Responsável por validar token recaptcha.")
+
+
+Rel(ActorPatient, SystemOCPatient, "Visualiza e interage com as funcionalidades do sistema")
+Rel(SystemOCPatient, SystemRedis, "Cachea dados", "cache-manager-redis-store")
+Rel(SystemOCPatient, SystemGoogleRecaptcha, "Valida token recaptcha", "@google-cloud/recaptcha-enterprise")
+Rel(SystemOCPatient, SystemAWSCognito, "Autentica o paciente", "@aws-sdk/client-cognito-identity-provider")
+Rel(SystemOCPatient, SystemMyPhysicianApi, "Obtém agendamentos do paciente", "Axios (HTTPs)")
+Rel(SystemOCPatient, SystemTasyApi, "Obtém dados do Tasy", "Axios (HTTPs)")
+Rel(SystemOCPatient, SystemCMSApi, "Gestão de acesso ao prontuário", "Axios (HTTPs)")
 
 @enduml
