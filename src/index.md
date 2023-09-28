@@ -3,6 +3,7 @@ Sumário:
 - [OC-Medico Interno](/OC-Medico%20Interno/HOME)
 - [OC-Paciente](/OC-Paciente/HOME)
 - [OC-Medico Externo](/OC-Medico%20Externo/HOME)
+- [OC-OCPM](/OC-OCPM/HOME)
 
 ### • Como a arquitetura está sendo exibida?
 
