@@ -68,3 +68,4 @@ No nível C1 você verá o sistema, do ponto de vista de contexto do sistema e d
 
 11. [MySQL](https://www.mysql.com)<br>
     O MySQL é um sistema de gerenciamento de banco de dados, que utiliza a linguagem SQL como interface. É atualmente um dos sistemas de gerenciamento de bancos de dados mais populares da Oracle Corporation, com mais de 10 milhões de instalações pelo mundo.
+    SQL (Structured Query Language - "linguagem de consulta estruturada"), é uma linguagem de domínio específico desenvolvida para gerenciar dados relacionais em um sistema de gerenciamento de banco de dados, ou para processamento de fluxo de dados em um sistema de gerenciamento de fluxo de dados.
