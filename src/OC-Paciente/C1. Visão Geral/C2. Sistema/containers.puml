@@ -13,8 +13,8 @@ Person(ActorPatient, "Paciente", "É o ator responsável por realizar a interaç
 
 /'Internal Systems'/
 Container_Boundary(SystemOCPatient, "Sistema OC-Paciente") {
-  Container(ContainerWebApp, "Aplicação Web", "Container: NextJS/React", "Provê aos usuários acesso as funcionalidades a partir do cliente.")
-  Container(ContainerServerApi, "API REST", "Container: NestJS/Node", "Provê as funcionalidades do OC-Paciente via API JSON/HTTPS.")
+  Container(ContainerWebApp, "Aplicação Web (oc-frontend-patient)", "Container: NextJS/React", "Provê aos usuários acesso as funcionalidades a partir do cliente.")
+  Container(ContainerServerApi, "API REST (oc-api-patient)", "Container: NestJS/Node", "Provê as funcionalidades do OC-Paciente via API JSON/HTTPS.")
   Container(ContainerDatabaseRedis, "Banco de Dados NoSQL", "Container: Redis", "Armazena dados temporários.")
 
   Rel(ActorPatient, ContainerWebApp, "Acessa paciente.grupooncoclinicas.com", "HTTPS")
