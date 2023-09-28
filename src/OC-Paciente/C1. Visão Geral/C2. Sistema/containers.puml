@@ -31,7 +31,7 @@ System_Ext(SystemGoogleRecaptcha, "Google Recaptcha", "Responsável por validar 
 
 /'Relations'/
 Rel(SystemOCPatient, SystemGoogleRecaptcha, "Valida token recaptcha", "@google-cloud/recaptcha-enterprise")
-Rel(SystemOCPatient, SystemAWSCognito, "Autentica o paciente", "@aws-sdk/client-cognito-identity-provider")
+Rel(SystemOCPatient, SystemAWSCognito, "Autentica o paciente", "HTTPS")
 Rel(SystemOCPatient, SystemMyPhysicianApi, "Obtém agendamentos do paciente", "JSON/HTTPS")
 Rel(SystemOCPatient, SystemTasyApi, "Obtém dados do Tasy", "JSON/HTTPS")
 Rel(SystemOCPatient, SystemApiCore, "Gestão de acesso ao prontuário", "JSON/HTTPS")

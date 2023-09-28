@@ -31,8 +31,8 @@ System_Ext(SystemAWSSecretManager, "AWS SecretManager", "Responsável por gerenc
 
 /'Relations'/
 Rel(ActorInternalPhysician, SystemOCInternalPhysician, "Visualiza e interage com as funcionalidades do sistema")
-Rel(SystemOCInternalPhysician, SystemAWSCognito, "Autentica o médico", "@aws-sdk/client-cognito-identity-provider")
-Rel(SystemOCInternalPhysician, SystemAWSSecretManager, "Obtém variáveis de ambiente", "@aws-sdk/client-secrets-manager")
+Rel(SystemOCInternalPhysician, SystemAWSCognito, "Autentica o médico", "JSON/HTTPS")
+Rel(SystemOCInternalPhysician, SystemAWSSecretManager, "Obtém variáveis de ambiente", "JSON/HTTPS")
 Rel(SystemOCInternalPhysician, SystemTasyApi, "Obtém dados do Tasy", "JSON/HTTPS")
 
 /'API-Core Integrations'/

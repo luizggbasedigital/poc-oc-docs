@@ -34,7 +34,7 @@ Rel(ActorOCPMPhysician, SystemOCOCPM, "Visualiza e interage com as funcionalidad
 /'API-Core Integrations'/
 Rel(SystemOCOCPM, SystemApiCore, "Gestão de dados do CMS e integrações", "JSON/HTTPS")
 Rel(SystemApiCore, SystemTasyApi, "Obtém dados do Tasy", "JSON/HTTPS")
-Rel(SystemApiCore, SystemAWSCognito, "Autentica o médico", "@aws-sdk/client-cognito-identity-provider")
-Rel(SystemApiCore, SystemAWSSecretManager, "Obtém variáveis de ambiente", "@aws-sdk/client-secrets-manager")
+Rel(SystemApiCore, SystemAWSCognito, "Autentica o médico", "JSON/HTTPS")
+Rel(SystemApiCore, SystemAWSSecretManager, "Obtém variáveis de ambiente", "JSON/HTTPS")
 
 @enduml
