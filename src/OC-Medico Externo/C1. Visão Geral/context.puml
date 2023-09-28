@@ -1,0 +1,37 @@
+@startuml "Context Diagram"
+
+title "OC-Medico Interno - Diagrama de contexto do sistema"
+
+!include https://raw.githubusercontent.com/adrianvlupu/C4-PlantUML/latest/C4_Context.puml
+
+LAYOUT_WITH_LEGEND()
+LAYOUT_LEFT_RIGHT()
+
+skinparam backgroundcolor transparent
+
+/'Actors'/
+Person(ActorReferrerPhysician, "Médico Externo", "É o ator responsável por realizar a interação com o sistema")
+
+/'Internal Systems'/
+System(SystemOCExternaPhysician, "Sistema OC-Médico Externo", "Responsável pelas funcionalidades: encaminhamento de pacientes, visualização de laudos, visualização de prontuários.")
+
+/'External Systems'/
+System_Ext(SystemTasyApi, "API Tasy", "Responsável por fornecer conexão direta com o sistema Tasy.")
+
+/'API-Core Systems'/
+System_Ext(SystemApiCore, "API Core", "Responsável por fornecer conexão direta com a api-core.")
+
+/'AWS Systems'/
+System_Ext(SystemAWSCognito, "AWS Cognito", "Responsável por gerenciar todo a autenticação do usuário (Cadastro, Login, MFA, Recuperação de conta).")
+System_Ext(SystemAWSSecretManager, "AWS SecretManager", "Responsável por gerenciar variáveis de ambiente.")
+
+/'Relations'/
+Rel(ActorReferrerPhysician, SystemOCExternaPhysician, "Visualiza e interage com as funcionalidades do sistema")
+
+/'API-Core Integrations'/
+Rel(SystemOCExternaPhysician, SystemApiCore, "Gestão de dados do CMS e integrações", "JSON/HTTPS")
+Rel(SystemApiCore, SystemTasyApi, "Obtém dados do Tasy", "JSON/HTTPS")
+Rel(SystemApiCore, SystemAWSCognito, "Autentica o médico", "@aws-sdk/client-cognito-identity-provider")
+Rel(SystemApiCore, SystemAWSSecretManager, "Obtém variáveis de ambiente", "@aws-sdk/client-secrets-manager")
+
+@enduml
