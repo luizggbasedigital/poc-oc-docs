@@ -1,6 +1,6 @@
 @startuml "Context Diagram"
 
-title "OC-Medico Interno - Diagrama de contexto do sistema"
+title "OC-OCPM - Diagrama de contexto do sistema"
 
 !include https://raw.githubusercontent.com/adrianvlupu/C4-PlantUML/latest/C4_Context.puml
 

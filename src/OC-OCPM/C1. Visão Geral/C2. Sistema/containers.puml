@@ -1,6 +1,6 @@
 @startuml "Container Diagram"
 
-title "OC-Medico Interno - Diagrama de container do sistema"
+title "OC-OCPM - Diagrama de container do sistema"
 
 !include https://raw.githubusercontent.com/adrianvlupu/C4-PlantUML/latest/C4_Component.puml
 
