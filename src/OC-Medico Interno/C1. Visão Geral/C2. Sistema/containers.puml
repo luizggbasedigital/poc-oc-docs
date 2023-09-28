@@ -13,8 +13,8 @@ Person(ActorInternalPhysician, "Médico Interno", "É o ator responsável por re
 
 /'Internal Systems'/
 Container_Boundary(SystemOCInternalPhysician, "Sistema OC-Médico Interno") {
-  Container(ContainerWebApp, "Aplicação Web", "Container: NextJS/React", "Provê aos usuários acesso as funcionalidades a partir do cliente.")
-  Container(ContainerServerApi, "API REST", "Container: NestJS/Node", "Provê as funcionalidades do OC-Médico Interno via API JSON/HTTPS.")
+  Container(ContainerWebApp, "Aplicação Web (oc-frontend-physician)", "Container: NextJS/React", "Provê aos usuários acesso as funcionalidades a partir do cliente.")
+  Container(ContainerServerApi, "API REST (oc-api-physician)", "Container: NestJS/Node", "Provê as funcionalidades do OC-Médico Interno via API JSON/HTTPS.")
   Container(ContainerDatabaseRedis, "Banco de Dados NoSQL", "Container: Redis", "Armazena dados temporários.")
   Container(ContainerDatabaseSQL, "Banco de Dados SQL", "Container: MySQL", "Armazena dados que irão persistir (mesmo banco de dados utilizado na Api Core).")
 
@@ -32,10 +32,10 @@ System_Ext(SystemTasyApi, "API Tasy", "Responsável por fornecer conexão direta
 
 /'API-Core Systems'/
 System_Ext(SystemApiCore, "API Core", "Responsável por fornecer conexão direta com a api-core.")
-System_Ext(SystemMevo, "Mevo", "Responsável por fornecer conexão direta com a Mevo.")
-System_Ext(SystemSalesForce, "SalesForce", "Responsável por fornecer conexão direta a SalesForce.")
-System_Ext(SystemGrano, "Grano", "Responsável por fornecer conexão direta a Grano.")
-System_Ext(SystemNetshow, "Netshow", "Responsável por fornecer conexão direta a Netshow.")
+System_Ext(SystemMevo, "Mevo", "Responsável pela geração de receitas médicas digitais.")
+System_Ext(SystemSalesForce, "API SalesForce", "Responsável por fornecer conexão direta a SalesForce.")
+System_Ext(SystemGrano, "Grano", "Responsável pela gestão de conteúdo micro-learning.")
+System_Ext(SystemNetshow, "API Netshow", "Responsável por fornecer conexão direta a Netshow.")
 
 /'AWS Systems'/
 System_Ext(SystemAWSCognito, "AWS Cognito", "Responsável por gerenciar todo a autenticação do usuário (Cadastro, Login, MFA, Recuperação de conta).")
