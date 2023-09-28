@@ -9,7 +9,8 @@ LAYOUT_WITH_LEGEND()
 skinparam backgroundcolor transparent
 
 /'Actors'/
-Person(ActorPatient, "Paciente", "É o ator responsável por realizar a interação com o sistema")
+Person(ActorPatient, "Paciente", "Indíviduo que está sob cuidado de um profissional da saúde e/ou instituição de cuidado.")
+Person(ActorCompanion, "Acompanhante", "Indivíduo autorizado pelo paciente para gerir seus dados.")
 
 /'Internal Systems'/
 Container_Boundary(SystemOCPatient, "Sistema OC-Paciente") {
@@ -18,6 +19,7 @@ Container_Boundary(SystemOCPatient, "Sistema OC-Paciente") {
   Container(ContainerDatabaseRedis, "Cache", "Container: Redis", "Armazena dados temporários.")
 
   Rel(ActorPatient, ContainerWebApp, "Acessa paciente.grupooncoclinicas.com", "HTTPS")
+  Rel(ActorCompanion, ContainerWebApp, "Acessa paciente.grupooncoclinicas.com", "HTTPS")
   Rel(ContainerServerApi, ContainerDatabaseRedis, "Realiza leitura e armazena dados", "TCP")
   Rel(ContainerWebApp, ContainerServerApi, "Faz chamada API", "JSON/HTTPS")
 }

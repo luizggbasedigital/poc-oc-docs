@@ -10,7 +10,8 @@ LAYOUT_LEFT_RIGHT()
 skinparam backgroundcolor transparent
 
 /'Actors'/
-Person(ActorReferrerPhysician, "Médico Externo", "É o ator responsável por realizar a interação com o sistema")
+Person(ActorReferrerPhysician, "Médico Externo", "Médico externo que consegue acessar as funcionalidades do sistema.")
+Person(ActorReferrerAssistant, "Assistente", "Assistente do médico externo.")
 
 /'Internal Systems'/
 System(SystemOCExternaPhysician, "Sistema OC-Médico Externo", "Responsável pelas funcionalidades: encaminhamento de pacientes, visualização de laudos, visualização de prontuários.")
@@ -27,6 +28,7 @@ System_Ext(SystemAWSSecretManager, "AWS SecretManager", "Responsável por gerenc
 
 /'Relations'/
 Rel(ActorReferrerPhysician, SystemOCExternaPhysician, "Visualiza e interage com as funcionalidades do sistema")
+Rel(ActorReferrerAssistant, SystemOCExternaPhysician, "Visualiza e interage com as funcionalidades do sistema")
 
 /'API-Core Integrations'/
 Rel(SystemOCExternaPhysician, SystemApiCore, "Gestão de dados do CMS e integrações", "JSON/HTTPS")

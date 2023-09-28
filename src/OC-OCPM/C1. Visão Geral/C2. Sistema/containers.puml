@@ -28,9 +28,6 @@ System_Ext(SystemApiCore, "API Core", "Responsável por fornecer conexão direta
 System_Ext(SystemAWSCognito, "AWS Cognito", "Responsável por gerenciar todo a autenticação do usuário (Cadastro, Login, MFA, Recuperação de conta).")
 System_Ext(SystemAWSSecretManager, "AWS SecretManager", "Responsável por gerenciar variáveis de ambiente.")
 
-/'Relations'/
-Rel(ActorOCPMPhysician, SystemOCOCPM, "Visualiza e interage com as funcionalidades do sistema")
-
 /'API-Core Integrations'/
 Rel(SystemOCOCPM, SystemApiCore, "Gestão de dados do CMS e integrações", "JSON/HTTPS")
 Rel(SystemApiCore, SystemTasyApi, "Obtém dados do Tasy", "JSON/HTTPS")

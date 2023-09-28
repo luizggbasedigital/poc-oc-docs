@@ -10,7 +10,8 @@ LAYOUT_LEFT_RIGHT()
 skinparam backgroundcolor transparent
 
 /'Actors'/
-Person(ActorPatient, "Paciente", "É o ator responsável por realizar a interação com o sistema ")
+Person(ActorPatient, "Paciente", "Indíviduo que está sob cuidado de um profissional da saúde e/ou instituição de cuidado.")
+Person(ActorCompanion, "Acompanhante", "Indivíduo autorizado pelo paciente para gerir seus dados.")
 
 /'Internal Systems'/
 System(SystemOCPatient, "Sistema OC-Paciente", "Responsável pelas funcionalidades: listagem e agendamento de consultas, gestão de acompanhantes, visualização de laudos, gestão de acesso ao prontuário.")
@@ -25,6 +26,7 @@ System_Ext(SystemGoogleRecaptcha, "Google Recaptcha", "Responsável por validar 
 
 /'Relations'/
 Rel(ActorPatient, SystemOCPatient, "Visualiza e interage com as funcionalidades do sistema")
+Rel(ActorCompanion, SystemOCPatient, "Visualiza e interage com as funcionalidades do sistema")
 Rel(SystemOCPatient, SystemGoogleRecaptcha, "Valida token recaptcha", "@google-cloud/recaptcha-enterprise")
 Rel(SystemOCPatient, SystemAWSCognito, "Autentica o paciente", "HTTPS")
 Rel(SystemOCPatient, SystemAWSSecretManager, "Obtém variáveis de ambiente", "JSON/HTTPS")
