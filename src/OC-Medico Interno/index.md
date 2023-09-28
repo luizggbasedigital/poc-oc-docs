@@ -29,3 +29,12 @@
 
 8. [AWS - Cognito](https://aws.amazon.com/pt/cognito/)<br>
    O Amazon Cognito é uma plataforma de identidade para aplicações web e aplicativos móveis. É um diretório de usuários, um servidor de autenticação e um serviço de autorização para credenciais da AWS e tokens de acesso do OAuth 2.0. Com o Amazon Cognito, você pode autenticar e autorizar usuários do diretório de usuários integrado, de seu diretório corporativo e de provedores de identidades de consumidores, como Google e Facebook.
+
+9. [AWS - SecretManager](https://aws.amazon.com/pt/secrets-manager/)<br>
+   O AWS Secrets Manager permite armazenar, recuperar, controlar o acesso, alternar, auditar e monitorar segredos de forma centralizada. Você pode criptografar segredos ociosos para reduzir a probabilidade de visualização de informações confidenciais por usuários não autorizados.
+
+10. [Redis](https://redis.io/)<br>
+    Redis é um armazenamento de estrutura de dados em memória, usado como um banco de dados em memória distribuído de chave-valor, cache e agente de mensagens, com durabilidade opcional.
+
+11. [MySQL](https://www.mysql.com)<br>
+    O MySQL é um sistema de gerenciamento de banco de dados, que utiliza a linguagem SQL como interface. É atualmente um dos sistemas de gerenciamento de bancos de dados mais populares da Oracle Corporation, com mais de 10 milhões de instalações pelo mundo.
