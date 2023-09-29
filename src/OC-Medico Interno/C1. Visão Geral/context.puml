@@ -13,7 +13,7 @@ skinparam backgroundcolor transparent
 Person(ActorInternalPhysician, "Médico Interno", "É o ator responsável por realizar a interação com o sistema")
 
 /'Internal Systems'/
-System(SystemOCInternalPhysician, "Sistema OC-Médico Interno", "Responsável pelas funcionalidades: listagem de consultas, visualização de laudos, visualização de protocolos preferenciais.")
+System(SystemOCInternalPhysician, "Sistema OC-Médico Interno", "<b>Funcionalidades</b>: listagem de pacientes e agenda, prontuário, treinamento (Grano), laudos, protocolos preferenciais, telemedicina.")
 
 /'External Systems'/
 System_Ext(SystemTasyApi, "API Tasy", "Responsável por fornecer conexão direta com o sistema Tasy.")
@@ -21,22 +21,21 @@ System_Ext(SystemTasyApi, "API Tasy", "Responsável por fornecer conexão direta
 /'API-Core Systems'/
 System_Ext(SystemApiCore, "API Core", "Responsável por fornecer conexão direta com a api-core.")
 System_Ext(SystemMevo, "Mevo", "Responsável pela geração de receitas médicas digitais.")
-System_Ext(SystemSalesForce, "API SalesForce", "Responsável por fornecer conexão direta a SalesForce.")
-System_Ext(SystemGrano, "Grano", "Responsável pela gestão de conteúdo micro-learning.")
-System_Ext(SystemNetshow, "API Netshow", "Responsável por fornecer conexão direta a Netshow.")
+System_Ext(SystemSalesForce, "API SalesForce", "Responsável pela abertura de caso e criação de usuário SalesForce.")
+System_Ext(SystemGrano, "Grano", "Responsável pelo treinamento das ferramentas internas da Oncoclinicas.")
+System_Ext(SystemNetshow, "API Netshow", "Responsável pelo acesso ao Instituto Oncoclínicas de Ensino, Pesquisa e Educação Médica Continuada.")
 
 /'AWS Systems'/
 System_Ext(SystemAWSCognito, "AWS Cognito", "Responsável por gerenciar todo a autenticação do usuário (Cadastro, Login, MFA, Recuperação de conta).")
-System_Ext(SystemAWSSecretManager, "AWS SecretManager", "Responsável por gerenciar variáveis de ambiente.")
 
 /'Relations'/
 Rel(ActorInternalPhysician, SystemOCInternalPhysician, "Visualiza e interage com as funcionalidades do sistema")
 Rel(SystemOCInternalPhysician, SystemAWSCognito, "Autentica o médico", "JSON/HTTPS")
-Rel(SystemOCInternalPhysician, SystemAWSSecretManager, "Obtém variáveis de ambiente", "JSON/HTTPS")
-Rel(SystemOCInternalPhysician, SystemTasyApi, "Obtém dados do Tasy", "JSON/HTTPS")
+Rel(SystemOCInternalPhysician, SystemTasyApi, "Obtém dados do sistema de gestão clinico", "JSON/HTTPS")
 
 /'API-Core Integrations'/
 Rel(SystemOCInternalPhysician, SystemApiCore, "Gestão de dados do CMS e integrações", "JSON/HTTPS")
+Rel(SystemApiCore, SystemTasyApi, "Obtém laudos dos pacientes", "JSON/HTTPS")
 Rel(SystemApiCore, SystemMevo, "Emite receita médica digital", "JSON/HTTPS")
 Rel(SystemApiCore, SystemSalesForce, "Criação de caso e usuário no SalesForce", "JSON/HTTPS")
 Rel(SystemApiCore, SystemGrano, "Gera URL de acesso Grano", "JSON/HTTPS")

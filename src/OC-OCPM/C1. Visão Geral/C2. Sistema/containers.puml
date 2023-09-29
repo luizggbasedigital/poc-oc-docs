@@ -26,12 +26,11 @@ System_Ext(SystemApiCore, "API Core", "Responsável por fornecer conexão direta
 
 /'AWS Systems'/
 System_Ext(SystemAWSCognito, "AWS Cognito", "Responsável por gerenciar todo a autenticação do usuário (Cadastro, Login, MFA, Recuperação de conta).")
-System_Ext(SystemAWSSecretManager, "AWS SecretManager", "Responsável por gerenciar variáveis de ambiente.")
+
 
 /'API-Core Integrations'/
 Rel(SystemOCOCPM, SystemApiCore, "Gestão de dados do CMS e integrações", "JSON/HTTPS")
 Rel(SystemApiCore, SystemTasyApi, "Obtém dados do Tasy", "JSON/HTTPS")
 Rel(SystemApiCore, SystemAWSCognito, "Autentica o médico", "JSON/HTTPS")
-Rel(SystemApiCore, SystemAWSSecretManager, "Obtém variáveis de ambiente", "JSON/HTTPS")
 
 @enduml

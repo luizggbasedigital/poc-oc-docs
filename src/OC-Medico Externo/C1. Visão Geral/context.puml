@@ -10,8 +10,8 @@ LAYOUT_LEFT_RIGHT()
 skinparam backgroundcolor transparent
 
 /'Actors'/
-Person(ActorReferrerPhysician, "Médico Externo", "Médico externo que consegue acessar as funcionalidades do sistema.")
-Person(ActorReferrerAssistant, "Assistente", "Assistente do médico externo.")
+Person(ActorReferrerPhysician, "Médico Externo", "Médico externo do grupo oncoclinicas que consegue acessar as funcionalidades do sistema.")
+Person(ActorReferrerAssistant, "Assistente", "Indivíduo autorizado pelo médico para gerir seus dados.")
 
 /'Internal Systems'/
 System(SystemOCExternaPhysician, "Sistema OC-Médico Externo", "Responsável pelas funcionalidades: encaminhamento de pacientes, visualização de laudos, visualização de prontuários.")
@@ -24,7 +24,7 @@ System_Ext(SystemApiCore, "API Core", "Responsável por fornecer conexão direta
 
 /'AWS Systems'/
 System_Ext(SystemAWSCognito, "AWS Cognito", "Responsável por gerenciar todo a autenticação do usuário (Cadastro, Login, MFA, Recuperação de conta).")
-System_Ext(SystemAWSSecretManager, "AWS SecretManager", "Responsável por gerenciar variáveis de ambiente.")
+
 
 /'Relations'/
 Rel(ActorReferrerPhysician, SystemOCExternaPhysician, "Visualiza e interage com as funcionalidades do sistema")
@@ -34,6 +34,5 @@ Rel(ActorReferrerAssistant, SystemOCExternaPhysician, "Visualiza e interage com 
 Rel(SystemOCExternaPhysician, SystemApiCore, "Gestão de dados do CMS e integrações", "JSON/HTTPS")
 Rel(SystemApiCore, SystemTasyApi, "Obtém dados do Tasy", "JSON/HTTPS")
 Rel(SystemApiCore, SystemAWSCognito, "Autentica o médico", "JSON/HTTPS")
-Rel(SystemApiCore, SystemAWSSecretManager, "Obtém variáveis de ambiente", "JSON/HTTPS")
 
 @enduml
