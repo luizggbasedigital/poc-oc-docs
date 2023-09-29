@@ -42,6 +42,5 @@ No nível C1 você verá o sistema, do ponto de vista de contexto do sistema e d
 7. [TCP](https://www.ibm.com/docs/pt-br/aix/7.3?topic=concepts-transmission-control-protocolinternet-protocol)<br>
 8. [REST API](https://standards.rest/)<br>
 9. [AWS - Cognito](https://aws.amazon.com/pt/cognito/)<br>
-10. [AWS - SecretManager](https://aws.amazon.com/pt/secrets-manager/)<br>
-11. [Redis](https://redis.io/)<br>
-12. [MySQL](https://www.mysql.com)<br>
+10. [Redis](https://redis.io/)<br>
+11. [MySQL](https://www.mysql.com)<br>
