@@ -26,7 +26,7 @@ System_Ext(SystemGrano, "Grano", "Responsável pelo treinamento das ferramentas 
 System_Ext(SystemNetshow, "API Netshow", "Responsável pelo acesso ao Instituto Oncoclínicas de Ensino, Pesquisa e Educação Médica Continuada.")
 
 /'AWS Systems'/
-System_Ext(SystemAWSCognito, "AWS Cognito", "Responsável por gerenciar todo a autenticação do usuário (Cadastro, Login, MFA, Recuperação de conta).")
+System_Ext(SystemAWSCognito, "AWS Cognito", "Responsável por gerenciar a autenticação do usuário (Login, MFA).")
 
 /'Relations'/
 Rel(ActorInternalPhysician, SystemOCInternalPhysician, "Visualiza e interage com as funcionalidades do sistema")

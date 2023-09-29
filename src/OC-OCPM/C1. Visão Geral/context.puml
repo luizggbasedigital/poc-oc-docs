@@ -10,10 +10,10 @@ LAYOUT_LEFT_RIGHT()
 skinparam backgroundcolor transparent
 
 /'Actors'/
-Person(ActorOCPMPhysician, "Médico OCPM", "É o ator responsável por realizar a interação com o sistema")
+Person(ActorOCPMUser, "Usuário OCPM", "É o ator responsável por realizar a interação com o sistema")
 
 /'Internal Systems'/
-System(SystemOCOCPM, "Sistema OC-OCPM", "Responsável pelas funcionalidades: visualização de laudos.")
+System(SystemOCOCPM, "Sistema OC-OCPM", "Responsável pelas funcionalidades: visualização de laudos, gestão de acessos da API.")
 
 /'External Systems'/
 System_Ext(SystemTasyApi, "API Tasy", "Responsável por fornecer conexão direta com o sistema Tasy.")
@@ -26,7 +26,7 @@ System_Ext(SystemAWSCognito, "AWS Cognito", "Responsável por gerenciar todo a a
 
 
 /'Relations'/
-Rel(ActorOCPMPhysician, SystemOCOCPM, "Visualiza e interage com as funcionalidades do sistema")
+Rel(ActorOCPMUser, SystemOCOCPM, "Visualiza e interage com as funcionalidades do sistema")
 
 /'API-Core Integrations'/
 Rel(SystemOCOCPM, SystemApiCore, "Gestão de dados do CMS e integrações", "JSON/HTTPS")
